@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Proyecciones: datos publicos con graficas interactivas</title>
+<meta name="description" content="Once paginas de datos publicos con graficas interactivas: bolsa, materias primas, divisas, bitcoin, bonos, vivienda, alquiler, gasolina, supermercado y sismos. Ninguna cifra esta inventada.">
+<link rel="canonical" href="https://adrianezd.github.io/proyecciones/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Proyecciones: datos publicos con graficas interactivas">
+<meta property="og:description" content="Once paginas de datos publicos con graficas interactivas. Ninguna cifra esta inventada: todo sale de una API real y cada pagina dice de cual.">
+<meta property="og:locale" content="es_ES">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./estatico/estilo.css">
+</head>
+<body>
+
+<nav class="barra" aria-label="Secciones">
+  <a class="marca" href="./">Proyecciones</a>
+  <div class="enlaces">
+    <a href="https://adrianezd.github.io/proyecciones-bolsa/">Bolsa</a><a href="https://adrianezd.github.io/proyecciones-materias-primas/">Materias primas</a><a href="https://adrianezd.github.io/proyecciones-divisas/">Divisas</a><a href="https://adrianezd.github.io/proyecciones-bitcoin/">Bitcoin</a><a href="https://adrianezd.github.io/proyecciones-bonos/">Bonos</a><a href="https://adrianezd.github.io/proyecciones-vivienda/">Vivienda</a><a href="https://adrianezd.github.io/proyecciones-alquiler/">Alquiler</a><a href="https://adrianezd.github.io/proyecciones-gasolina/">Gasolina</a><a href="https://adrianezd.github.io/proyecciones-supermercado/">Supermercado</a><a href="https://adrianezd.github.io/proyecciones-terremotos/">Terremotos</a><a href="https://adrianezd.github.io/proyecciones-sismos/">Sismos en Espana</a>
+  </div>
+</nav>
+
+<main class="marco">
+<h1>Proyecciones</h1>
+<p class="bajada">Once paginas de datos publicos, cada una en su propio sitio, con graficas que se pueden tocar. Ninguna cifra esta inventada: todo sale de una API real y cada pagina dice de cual.</p>
+
+<div class="rejilla-portada">
+  <a class="ficha" data-c="bolsa" href="https://adrianezd.github.io/proyecciones-bolsa/">
+    <h2>Bolsa</h2>
+    <p>El S&amp;P 500 y otros grandes indices y fondos del mundo.</p>
+  </a>
+  <a class="ficha" data-c="materias-primas" href="https://adrianezd.github.io/proyecciones-materias-primas/">
+    <h2>Materias primas</h2>
+    <p>Oro, plata, petroleo Brent y gas natural.</p>
+  </a>
+  <a class="ficha" data-c="divisas" href="https://adrianezd.github.io/proyecciones-divisas/">
+    <h2>Divisas</h2>
+    <p>El euro frente al dolar, la libra y el yen.</p>
+  </a>
+  <a class="ficha" data-c="bitcoin" href="https://adrianezd.github.io/proyecciones-bitcoin/">
+    <h2>Bitcoin</h2>
+    <p>Bitcoin, Ethereum y XRP: las tres mayores criptomonedas.</p>
+  </a>
+  <a class="ficha" data-c="bonos" href="https://adrianezd.github.io/proyecciones-bonos/">
+    <h2>Bonos</h2>
+    <p>Lo que paga cada pais del euro por su deuda a diez anos.</p>
+  </a>
+  <a class="ficha" data-c="vivienda" href="https://adrianezd.github.io/proyecciones-vivienda/">
+    <h2>Vivienda</h2>
+    <p>Precio de compra segun el indice del INE.</p>
+  </a>
+  <a class="ficha" data-c="alquiler" href="https://adrianezd.github.io/proyecciones-alquiler/">
+    <h2>Alquiler</h2>
+    <p>Lo mismo aplicado a la renta mensual.</p>
+  </a>
+  <a class="ficha" data-c="gasolina" href="https://adrianezd.github.io/proyecciones-gasolina/">
+    <h2>Gasolina</h2>
+    <p>Precio de repostar, provincia a provincia.</p>
+  </a>
+  <a class="ficha" data-c="supermercado" href="https://adrianezd.github.io/proyecciones-supermercado/">
+    <h2>Supermercado</h2>
+    <p>Precios de la compra. Cobertura escasa, y se avisa.</p>
+  </a>
+  <a class="ficha" data-c="terremotos" href="https://adrianezd.github.io/proyecciones-terremotos/">
+    <h2>Terremotos</h2>
+    <p>Lo que ha temblado en el mundo en las ultimas 24 horas.</p>
+  </a>
+  <a class="ficha" data-c="sismos" href="https://adrianezd.github.io/proyecciones-sismos/">
+    <h2>Sismos en Espana</h2>
+    <p>Cada cuanto tiembla aqui, segun el catalogo historico.</p>
+  </a>
+</div>
+
+<h2>Como esta montado</h2>
+<p>Cada pagina de arriba es su propio repositorio y su propio sitio de GitHub Pages, con su propia GitHub Action. No hay servidor: la Action lanza un script de Python cada doce horas, descarga la fuente correspondiente, calcula lo que haga falta y escribe HTML plano.</p>
+<p>Como los datos ya vienen dentro del HTML, cada pagina carga al instante y no hace ninguna llamada externa cuando la abres.</p>
+
+<h2>De donde sale cada cosa</h2>
+<table>
+  <thead><tr><th>Pagina</th><th>Fuente</th></tr></thead>
+  <tbody>
+    <tr><td>Bolsa, materias primas, divisas y bitcoin</td><td>Yahoo Finance (y Kraken de respaldo para cripto)</td></tr>
+    <tr><td>Bonos</td><td>Banco Central Europeo</td></tr>
+    <tr><td>Vivienda y alquiler</td><td>INE</td></tr>
+    <tr><td>Gasolina</td><td>Ministerio para la Transicion Ecologica</td></tr>
+    <tr><td>Supermercado</td><td>Open Prices</td></tr>
+    <tr><td>Terremotos y sismos</td><td>USGS</td></tr>
+  </tbody>
+</table>
+
+<p>Si una fuente esta caida cuando corre la construccion de una pagina, esa Action reutiliza el ultimo dato bueno guardado en cache. Nunca se rellena un hueco con datos aproximados o inventados.</p>
+
+<footer class="pie">
+<p>Codigo de cada pagina en su propio repositorio de <a href="https://github.com/adrianezd?tab=repositories&q=proyecciones-">GitHub</a>.</p>
+</footer>
+</main>
+
+</body>
+</html>
