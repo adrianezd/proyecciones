@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://adrianezd.github.io/proyecciones/sitemap.xml
+Sitemap: https://adrianezd.github.io/proyecciones/sitemap-index.xml
