@@ -32,5 +32,14 @@ Regla del proyecto, en las once páginas: si una fuente no responde y no
 hay copia en caché, la página no se genera. Nunca se rellena un hueco con
 datos aproximados o "de ejemplo".
 
-Este repositorio en sí es solo la portada: HTML estático sin generador,
-publicado directamente por su GitHub Action al hacer push a `main`.
+## Hoy, comparador y avisos
+
+Este repositorio es la portada y, además, junta las once páginas:
+
+- **[España en datos hoy](https://adrianezd.github.io/proyecciones/hoy/)**: lo más llamativo del día, con el último dato y los cambios de cada serie.
+- **[Comparar](https://adrianezd.github.io/proyecciones/comparar/)**: hasta cuatro series de cualquier página en la misma gráfica (precios en base 100, tasas con su valor). La selección va en la dirección para compartirla.
+- **Avisos y «desde tu última visita»** en las once páginas: cada una carga `/proyecciones/estatico/avisos.js`, que lee `datos/resumen.json`.
+
+`fuente/construir.py` (solo librería estándar) no consulta las fuentes originales: lee la caché que cada página guarda en su repo (`cache/*.json`) y escribe `docs/datos/` y `docs/hoy/`. La GitHub Action lo lanza media hora después de que se actualicen las páginas (06:40 y 18:40 UTC). Como la caché de gasolina solo tiene el día de hoy, el histórico de la media nacional se guarda aquí, en `historia/gasolina.json`.
+
+Un aviso sale cuando un movimiento es poco habitual para esa serie (más de 2,5 desviaciones de su variación normal en un día o una semana), con máximos o mínimos de un año, con bonos que se mueven más de 0,35 puntos en un mes, gasolina que cambia 3 céntimos en una semana o terremotos fuertes.

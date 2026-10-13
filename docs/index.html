@@ -25,13 +25,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./estatico/estilo.css">
+<link rel="stylesheet" href="./estatico/portada.css">
 </head>
 <body>
 
 <nav class="barra" aria-label="Secciones">
   <a class="marca" href="./">Proyecciones</a>
   <div class="enlaces">
-    <a href="https://adrianezd.github.io/proyecciones-bolsa/">Bolsa</a><a href="https://adrianezd.github.io/proyecciones-materias-primas/">Materias primas</a><a href="https://adrianezd.github.io/proyecciones-divisas/">Divisas</a><a href="https://adrianezd.github.io/proyecciones-bitcoin/">Bitcoin</a><a href="https://adrianezd.github.io/proyecciones-bonos/">Bonos</a><a href="https://adrianezd.github.io/proyecciones-vivienda/">Vivienda</a><a href="https://adrianezd.github.io/proyecciones-alquiler/">Alquiler</a><a href="https://adrianezd.github.io/proyecciones-gasolina/">Gasolina</a><a href="https://adrianezd.github.io/proyecciones-supermercado/">Supermercado</a><a href="https://adrianezd.github.io/proyecciones-terremotos/">Terremotos</a><a href="https://adrianezd.github.io/proyecciones-sismos/">Sismos en España</a>
+    <a href="./hoy/">Hoy</a><a href="./comparar/">Comparar</a><a href="https://adrianezd.github.io/proyecciones-bolsa/">Bolsa</a><a href="https://adrianezd.github.io/proyecciones-materias-primas/">Materias primas</a><a href="https://adrianezd.github.io/proyecciones-divisas/">Divisas</a><a href="https://adrianezd.github.io/proyecciones-bitcoin/">Bitcoin</a><a href="https://adrianezd.github.io/proyecciones-bonos/">Bonos</a><a href="https://adrianezd.github.io/proyecciones-vivienda/">Vivienda</a><a href="https://adrianezd.github.io/proyecciones-alquiler/">Alquiler</a><a href="https://adrianezd.github.io/proyecciones-gasolina/">Gasolina</a><a href="https://adrianezd.github.io/proyecciones-supermercado/">Supermercado</a><a href="https://adrianezd.github.io/proyecciones-terremotos/">Terremotos</a><a href="https://adrianezd.github.io/proyecciones-sismos/">Sismos en España</a>
   </div>
 </nav>
 
@@ -40,6 +41,15 @@
 <p class="bajada">Once paginas de datos publicos, cada una en su propio sitio, con graficas que se pueden tocar. Ninguna cifra esta inventada: todo sale de una API real y cada pagina dice de cual.</p>
 
 <div class="rejilla-portada">
+  <a class="ficha ficha-hoy" href="./hoy/">
+    <h2>España en datos hoy</h2>
+    <p>Lo más llamativo de todas las páginas, con el último dato de cada una.</p>
+    <span class="hoy-linea" id="hoy-linea"></span>
+  </a>
+  <a class="ficha" data-c="mercados" href="./comparar/">
+    <h2>Comparar series</h2>
+    <p>Bolsa, oro, euro, bitcoin, bonos, vivienda o gasolina en la misma gráfica.</p>
+  </a>
   <a class="ficha" data-c="bolsa" href="https://adrianezd.github.io/proyecciones-bolsa/">
     <h2>Bolsa</h2>
     <p>El S&amp;P 500 y otros grandes indices y fondos del mundo.</p>
@@ -109,6 +119,13 @@
 <p>Codigo de cada pagina en su propio repositorio de <a href="https://github.com/adrianezd?tab=repositories&q=proyecciones-">GitHub</a>.</p>
 </footer>
 </main>
-
+<script src="./estatico/avisos.js" data-pagina="hoy" defer></script>
+<script>
+// el titular de hoy en la ficha de «España en datos hoy»
+fetch("./datos/resumen.json").then(function (r) { return r.json(); }).then(function (d) {
+  var t = d.destacados && d.destacados[0];
+  if (t) document.getElementById("hoy-linea").textContent = t.texto;
+}).catch(function () {});
+</script>
 </body>
 </html>

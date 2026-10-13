@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Comparar series: bolsa, oro, euro, bitcoin, bonos y gasolina en una gráfica</title>
+<meta name="description" content="Compara en una misma gráfica el IBEX, el S&amp;P 500, el oro, el petróleo, el euro, el bitcoin, los bonos, la vivienda o la gasolina, desde un mes hasta todo el histórico.">
+<link rel="canonical" href="https://adrianezd.github.io/proyecciones/comparar/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Comparar series de datos públicos">
+<meta property="og:description" content="Hasta cuatro series a la vez, de cualquier página de Proyecciones, en la misma gráfica.">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://adrianezd.github.io/proyecciones/estatico/og.png">
+<meta property="og:url" content="https://adrianezd.github.io/proyecciones/comparar/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../estatico/estilo.css">
+<link rel="stylesheet" href="../estatico/portada.css">
+</head>
+<body>
+<nav class="barra" aria-label="Secciones">
+  <a class="marca" href="../">Proyecciones</a>
+  <div class="enlaces"><a href="../hoy/">Hoy</a><a href="./" aria-current="page">Comparar</a><a href="https://adrianezd.github.io/proyecciones-bolsa/">Bolsa</a><a href="https://adrianezd.github.io/proyecciones-materias-primas/">Materias primas</a><a href="https://adrianezd.github.io/proyecciones-divisas/">Divisas</a><a href="https://adrianezd.github.io/proyecciones-bitcoin/">Bitcoin</a><a href="https://adrianezd.github.io/proyecciones-bonos/">Bonos</a><a href="https://adrianezd.github.io/proyecciones-vivienda/">Vivienda</a><a href="https://adrianezd.github.io/proyecciones-alquiler/">Alquiler</a><a href="https://adrianezd.github.io/proyecciones-gasolina/">Gasolina</a><a href="https://adrianezd.github.io/proyecciones-supermercado/">Supermercado</a><a href="https://adrianezd.github.io/proyecciones-terremotos/">Terremotos</a><a href="https://adrianezd.github.io/proyecciones-sismos/">Sismos en España</a></div>
+</nav>
+<main class="marco">
+<h1>Comparar series</h1>
+<p class="bajada">Elige hasta cuatro series de cualquier página y el periodo. Los precios se comparan en base 100, para ver cuál ha subido más; los tipos y porcentajes, con su valor.</p>
+<div id="cmp-series"></div>
+<div class="cmp-rangos" id="cmp-rangos"></div>
+<div id="cmp-graficas"></div>
+<p class="cmp-enlace"><button class="boton" id="cmp-copiar" type="button">Copiar enlace</button></p>
+<p class="apunte">Las series se actualizan dos veces al día con los mismos datos que cada página. La base 100 compara el cambio, no el valor: un 120 es un 20 % más que al empezar el periodo.</p>
+<footer class="pie">
+<p>Parte de <a href="../">Proyecciones</a>. Ninguna cifra está inventada: cada serie sale de la fuente que cita su página.</p>
+</footer>
+</main>
+<script src="../estatico/comparar.js" defer></script>
+</body>
+</html>

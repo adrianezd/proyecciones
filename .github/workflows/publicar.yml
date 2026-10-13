@@ -1,12 +1,16 @@
-name: Publicar
+name: Construir y publicar
 
 on:
+  schedule:
+    # Media hora después de que las once páginas actualicen sus datos
+    # (06:00 y 18:00 UTC), para leer ya su caché nueva.
+    - cron: "40 6,18 * * *"
   push:
     branches: [main]
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -15,16 +19,40 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  construir:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Solo librería estándar: no hace falta instalar nada
+      - name: Generar hoy, comparador y avisos
+        run: python -m fuente.construir
+
+      # La caché de gasolina solo guarda el día de hoy: el histórico de la
+      # media nacional lo lleva este repo en historia/.
+      - name: Guardar el histórico
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add historia/
+          git diff --staged --quiet || git commit -m "Actualizar histórico [skip ci]"
+          git push
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
   desplegar:
+    needs: construir
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.pages.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: docs
       - id: pages
         uses: actions/deploy-pages@v4
